@@ -68,8 +68,8 @@ class ProjectCard extends StatelessWidget {
           padding: const EdgeInsets.all(defaultPadding),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            image: const DecorationImage(
-              image: AssetImage('assets/images/projectImg.jpg'),
+            image: DecorationImage(
+              image: NetworkImage(project.imageUrl),
               fit: BoxFit.cover,
             ),
           ),
