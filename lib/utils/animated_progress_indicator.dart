@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants/constants.dart';
 
-
 class AnimatedCircularProgressIndicator extends StatelessWidget {
   const AnimatedCircularProgressIndicator({
     Key? key,
@@ -17,7 +16,7 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
     return Column(
       children: [
         AspectRatio(
-          aspectRatio: 1,
+          aspectRatio: 0.8,
           child: TweenAnimationBuilder(
             tween: Tween<double>(begin: 0, end: percentage),
             duration: defaultDuration,
@@ -64,9 +63,11 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: defaultPadding),
+      padding: const EdgeInsets.only(
+        bottom: defaultPadding,
+      ),
       child: TweenAnimationBuilder(
-        tween: Tween<double>(begin: 0, end: percentage),
+        tween: Tween<double>(begin: 0, end: percentage / 100),
         duration: defaultDuration,
         builder: (context, double value, child) => Column(
           children: [
@@ -75,12 +76,15 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 11,
+                  ),
                 ),
                 Text((value * 100).toInt().toString() + "%"),
               ],
             ),
-           const SizedBox(height: defaultPadding / 2),
+            const SizedBox(height: defaultPadding / 2),
             LinearProgressIndicator(
               value: value,
               color: primaryColor,

@@ -69,12 +69,14 @@ class AreasOfInterest extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Areas of Interest',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: kTextColor,
-              )),
+          const Text(
+            'Areas of Interest',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: kTextColor,
+            ),
+          ),
           const SizedBox(height: 20),
           Responsive(
             mobile: InterestsGridView(

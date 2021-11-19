@@ -48,6 +48,7 @@ class HomeBanner extends StatelessWidget {
                       : Theme.of(context).textTheme.headline6!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: kTextColor,
+                            fontSize: 17,
                           ),
                 ),
 
@@ -107,7 +108,9 @@ class HomeBanner extends StatelessWidget {
 
                 if (!Responsive.isMobileLarge(context))
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/projects');
+                    },
                     style: TextButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: defaultPadding * 2,

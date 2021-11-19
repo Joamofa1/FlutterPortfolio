@@ -83,7 +83,7 @@ class ProjectCard extends StatelessWidget {
                 project.title,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(color: kTextColor, fontSize: 20),
+                style: const TextStyle(color: kTextColor, fontSize: 23),
               ),
               // const Spacer(),
               Text(

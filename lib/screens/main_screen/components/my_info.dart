@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/constants.dart';
 
 class MyInfo extends StatelessWidget {
   const MyInfo({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class MyInfo extends StatelessWidget {
            const CircleAvatar(
               radius: 60,
               backgroundImage: AssetImage("assets/images/my_pic.jpg"),
+              backgroundColor: bgColor,
             ),
            const Spacer(),
             Text(
@@ -23,7 +25,7 @@ class MyInfo extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle2,
             ),
             const Text(
-              "Flutter Developer & Machine Learning Engineer",
+              "Software Engineer | Data Scientist",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w200,

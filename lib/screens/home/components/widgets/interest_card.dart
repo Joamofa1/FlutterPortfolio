@@ -28,23 +28,28 @@ class InterestCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             icon,
-            const Spacer(),
+            const SizedBox(
+              height: 40,
+            ),
             Text(
               title,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.headline6,
             ),
-            const Spacer(),
+            const SizedBox(
+              height: 15,
+            ),
             Text(
               description,
               maxLines: Responsive.isMobileLarge(context) ? 4 : 5,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 height: 1.5,
-                fontSize: 12,
+                fontSize: 15,
                 color: bodyTextColor,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
           ],

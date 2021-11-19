@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/constants.dart';
+import 'package:portfolio/services/services.dart';
 import 'package:portfolio/utils/responsive.dart';
 
 class Contact extends StatefulWidget {
@@ -19,6 +22,13 @@ class _ContactState extends State<Contact> {
   final FocusNode _fNameFocus = FocusNode();
   final FocusNode _emailFocus = FocusNode();
   final FocusNode _messageFocus = FocusNode();
+
+  bool isSendingMessage = false;
+  bool isSent = false;
+  bool isError = false;
+
+  String buttonText = 'Send Message';
+  Color buttonColor = primaryColor;
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +58,8 @@ class _ContactState extends State<Contact> {
                   ? MediaQuery.of(context).size.width * 0.5
                   : MediaQuery.of(context).size.width * 0.9,
               height: Responsive.isDesktop(context)
-                  ? MediaQuery.of(context).size.height * 0.7
-                  : MediaQuery.of(context).size.height * 0.65,
+                  ? MediaQuery.of(context).size.height * 0.72
+                  : MediaQuery.of(context).size.height * 0.7,
               child: Container(
                 padding: const EdgeInsets.all(30),
                 child: Form(
@@ -123,25 +133,64 @@ class _ContactState extends State<Contact> {
                         height: 50,
                       ),
                       MaterialButton(
-                          color: primaryColor,
+                          color: buttonColor,
                           height: 50,
-                          onPressed: () {},
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              setState(() {
+                                isSendingMessage = true;
+                              });
+
+                              dynamic response = await SendMessage()
+                                  .sendMessage(name, email, message);
+
+                              if (response == 201) {
+                                setState(() {
+                                  isSendingMessage = false;
+                                  isSent = true;
+                                  email = '';
+                                  name = '';
+                                  message = '';
+                                  buttonColor = Colors.green;
+                                  buttonText = 'Message Sent';
+                                });
+                              } else {
+                                setState(() {
+                                  isSendingMessage = false;
+                                  isSent = false;
+                                  isError = true;
+                                  email = '';
+                                  name = '';
+                                  message = '';
+                                  buttonText = "Couldn't send message";
+                                  buttonColor = Colors.red;
+                                });
+                              }
+
+                              _formKey.currentState!.reset();
+                            }
+                            // print(jsonEncode(response));
+                          },
                           elevation: 10,
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Text(
-                                  'Send Message',
-                                  style: TextStyle(color: kTextColor),
+                                  buttonText,
+                                  style: const TextStyle(color: kTextColor),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
-                                Icon(
-                                  FontAwesomeIcons.arrowRight,
-                                  size: 20,
-                                  color: kTextColor,
-                                ),
+                                isSendingMessage
+                                    ? const CircularProgressIndicator(
+                                        color: kTextColor,
+                                      )
+                                    : const Icon(
+                                        FontAwesomeIcons.arrowRight,
+                                        size: 20,
+                                        color: kTextColor,
+                                      )
                               ]))
                     ],
                   ),

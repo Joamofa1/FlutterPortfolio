@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:portfolio/models/otherSkill.dart';
@@ -6,7 +7,6 @@ import 'package:portfolio/models/projects.dart';
 import 'package:portfolio/models/skill.dart';
 
 class GetProjects {
-
   Future<List<Project>> fetchProjects() async {
     final response = await http
         .get(Uri.parse('https://api-port1.herokuapp.com/api/projects.json'));
@@ -17,18 +17,13 @@ class GetProjects {
       // isLoaded = true;
       return compute(parseProject, response.body);
     } else {
-
       // If the server did not return a 200 OK response,
       // then throw an exception.
       throw Exception('Failed to load projects');
     }
   }
 
-
-
-
-
-Future<List<Skill>> fetchSkills() async {
+  Future<List<Skill>> fetchSkills() async {
     final response = await http
         .get(Uri.parse('https://api-port1.herokuapp.com/api/skills.json'));
 
@@ -38,15 +33,13 @@ Future<List<Skill>> fetchSkills() async {
       // isLoaded = true;
       return compute(parseSkill, response.body);
     } else {
-
       // If the server did not return a 200 OK response,
       // then throw an exception.
       throw Exception('Failed to load projects');
     }
   }
 
-
-Future<List<OtherSkill>> fetchOtherSkills() async {
+  Future<List<OtherSkill>> fetchOtherSkills() async {
     final response = await http
         .get(Uri.parse('https://api-port1.herokuapp.com/api/otherskills.json'));
 
@@ -56,35 +49,53 @@ Future<List<OtherSkill>> fetchOtherSkills() async {
       // isLoaded = true;
       return compute(parseOtherSkill, response.body);
     } else {
-
       // If the server did not return a 200 OK response,
       // then throw an exception.
       throw Exception('Failed to load projects');
     }
   }
 
-
 // A function that converts a response body into a List<Projects>.
-List<Project> parseProject(String responseBody) {
+  List<Project> parseProject(String responseBody) {
     final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
 
     return parsed.map<Project>((json) => Project.fromJson(json)).toList();
   }
 
-
-
-List<Skill> parseSkill(String responseBody) {
+  List<Skill> parseSkill(String responseBody) {
     final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
 
     return parsed.map<Skill>((json) => Skill.fromJson(json)).toList();
   }
 
-
-List<OtherSkill> parseOtherSkill(String responseBody) {
+  List<OtherSkill> parseOtherSkill(String responseBody) {
     final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
 
     return parsed.map<OtherSkill>((json) => OtherSkill.fromJson(json)).toList();
   }
+}
 
-  
+class SendMessage {
+  Dio dio = Dio();
+
+  Future<dynamic> sendMessage(String name, String email, String message) async {
+    String _baseUrl = "https://api-port1.herokuapp.com/api/contact/";
+    var options = Options(
+      contentType: "application/json",
+      followRedirects: false,
+    );
+
+    final response = await dio.post(
+      _baseUrl,
+      data: {
+        "name": name,
+        "email": email,
+        "message": message,
+      },
+      options: options,
+    );
+
+    
+    return response.statusCode;
+  }
 }

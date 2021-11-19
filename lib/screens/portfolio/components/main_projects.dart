@@ -6,10 +6,9 @@ import 'package:portfolio/screens/home/components/widgets/project_grid.dart';
 import 'package:portfolio/screens/home/components/widgets/shimmer_grid.dart';
 import 'package:portfolio/state/state_manager.dart';
 import 'package:portfolio/utils/responsive.dart';
-import 'package:shimmer/shimmer.dart';
 
-class MyProjects extends ConsumerWidget {
-  const MyProjects({
+class MainProjects extends ConsumerWidget {
+  const MainProjects({
     Key? key,
   }) : super(key: key);
 
@@ -26,9 +25,13 @@ class MyProjects extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "My Projects",
-            style: Theme.of(context).textTheme.headline6,
+          Center(
+            child: Text(
+              "Hi, I'm glad to see you here, below are some of my favorite projects I built during my free time. Enjoy 😊",
+              style:
+                  Theme.of(context).textTheme.headline6!.copyWith(fontSize: 15),
+              textAlign: TextAlign.center,
+            ),
           ),
           const SizedBox(height: defaultPadding),
           projects.when(
@@ -64,17 +67,17 @@ class MyProjects extends ConsumerWidget {
           const SizedBox(
             height: 30,
           ),
-          Center(
-            child: TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/projects');
-              },
-              child: const Text(
-                'See More >>',
-                style: TextStyle(color: primaryColor),
-              ),
-            ),
-          )
+          // Center(
+          //   child: TextButton(
+          //     onPressed: () {
+          //       Navigator.pushNamed(context, '/projects');
+          //     },
+          //     child: const Text(
+          //       'See More >>',
+          //       style: TextStyle(color: primaryColor),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );

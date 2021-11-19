@@ -62,7 +62,7 @@ class Footer extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () {
-                      _launchURL('https://github.com/franklinosei');
+                      _launchURL('https://twitter.com/iamdveloper?t=GlBKEOxyQFu_QHn-1ATc9g&s=09');
                     },
                     child: const Icon(
                       FontAwesomeIcons.twitter,
