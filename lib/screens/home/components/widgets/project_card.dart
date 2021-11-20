@@ -65,7 +65,7 @@ class ProjectCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () => _launchURL(project.projectUrl),
         child: Container(
-          padding: const EdgeInsets.all(defaultPadding),
+          // padding: const EdgeInsets.all(defaultPadding),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
@@ -73,36 +73,46 @@ class ProjectCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          // color: secondaryColor,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(),
-              Text(
-                project.title,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(color: kTextColor, fontSize: 23),
-              ),
-              // const Spacer(),
-              Text(
-                project.description,
-                maxLines: Responsive.isMobileLarge(context) ? 5 : 6,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(height: 1.5, color: kTextColor),
-              ),
-              const Spacer(),
-              // TextButton(
-              //   onPressed: () {
-              //     launch(project.projectUrl);
-              //   },
-              //   child: const Text(
-              //     "Read More >>",
-              //     style: TextStyle(color: primaryColor),
-              //   ),
-              // ),
-            ],
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.black.withOpacity(0.5),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Spacer(),
+                Text(
+                  project.title,
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                      color: kTextColor,
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                // const Spacer(),
+                Text(
+                  project.description,
+                  maxLines: Responsive.isMobileLarge(context) ? 7 : 8,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(height: 1.5, color: kTextColor),
+                  textAlign: TextAlign.center,
+                ),
+                const Spacer(),
+                // TextButton(
+                //   onPressed: () {
+                //     launch(project.projectUrl);
+                //   },
+                //   child: const Text(
+                //     "Read More >>",
+                //     style: TextStyle(color: primaryColor),
+                //   ),
+                // ),
+              ],
+            ),
           ),
         ),
       ),

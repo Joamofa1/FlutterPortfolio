@@ -4,6 +4,7 @@ import 'package:portfolio/constants/constants.dart';
 import 'package:portfolio/models/projects.dart';
 import 'package:portfolio/screens/home/components/widgets/project_grid.dart';
 import 'package:portfolio/screens/home/components/widgets/shimmer_grid.dart';
+import 'package:portfolio/screens/portfolio/components/projects_grid.dart';
 import 'package:portfolio/state/state_manager.dart';
 import 'package:portfolio/utils/responsive.dart';
 
@@ -37,20 +38,20 @@ class MainProjects extends ConsumerWidget {
           projects.when(
             data: (project) {
               return Responsive(
-                mobile: ProjectsGridView(
+                mobile: ProjectsGrid(
                   crossAxisCount: 1,
                   childAspectRatio: 1.7,
                   projects: project,
                 ),
-                mobileLarge: ProjectsGridView(
+                mobileLarge: ProjectsGrid(
                   crossAxisCount: 2,
                   projects: project,
                 ),
-                tablet: ProjectsGridView(
+                tablet: ProjectsGrid(
                   childAspectRatio: 1.1,
                   projects: project,
                 ),
-                desktop: ProjectsGridView(
+                desktop: ProjectsGrid(
                   projects: project,
                 ),
               );

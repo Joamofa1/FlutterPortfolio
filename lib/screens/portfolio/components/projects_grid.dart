@@ -5,9 +5,9 @@ import 'package:portfolio/models/projects.dart';
 import 'package:portfolio/screens/home/components/widgets/project_card.dart';
 // import 'package:portfolio/state/state_manager.dart';
 
-class ProjectsGridView extends StatelessWidget {
+class ProjectsGrid extends StatelessWidget {
   final List<Project> projects;
-  const ProjectsGridView({
+  const ProjectsGrid({
     Key? key,
     this.crossAxisCount = 3,
     this.childAspectRatio = 1.3,
@@ -24,7 +24,7 @@ class ProjectsGridView extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 6,
+      itemCount: projects.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: crossAxisCount,
         childAspectRatio: childAspectRatio,
