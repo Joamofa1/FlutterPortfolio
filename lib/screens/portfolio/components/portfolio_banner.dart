@@ -37,6 +37,29 @@ class PortfolioBanner extends StatelessWidget {
                             color: kTextColor,
                           ),
                 ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          "Home",
+                          style: TextStyle(color: kTextColor),
+                        ),
+                      ),
+                      const Text(
+                        '--> Projects',
+                        style: TextStyle(
+                          color: kTextColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 // Text(
                 //   "Here some of the projects I built at my free times",
                 //   style: Responsive.isDesktop(context)

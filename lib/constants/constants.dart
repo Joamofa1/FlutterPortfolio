@@ -11,19 +11,16 @@ const defaultPadding = 20.0;
 const defaultDuration = Duration(seconds: 1); // we use it on our animation
 const maxWidth = 1440.0;
 
-const textInputDecoration = InputDecoration(
-  //fillColor: Colors.white,
 
-  //filled: true,
-  // contentPadding: EdgeInsets.all(15.0),
+const textInputDecoration = InputDecoration(
   hintStyle: TextStyle(color: Colors.white),
   labelStyle: TextStyle(color: Colors.grey),
-  // hintStyle: TextStyle(color: Colors.white),
-  // enabledBorder: OutlineInputBorder(
-  //   // borderSide: BorderSide(color: colors.whiteColor),
-  // ),
   focusedBorder: OutlineInputBorder(
       borderSide: BorderSide(
     color: kTextColor,
   )),
 );
+
+
+
+

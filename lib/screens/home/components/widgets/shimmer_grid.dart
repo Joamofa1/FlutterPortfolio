@@ -3,6 +3,7 @@ import 'package:portfolio/constants/constants.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/models/projects.dart';
 import 'package:portfolio/screens/home/components/widgets/project_card.dart';
+import 'package:portfolio/utils/responsive.dart';
 import 'package:shimmer/shimmer.dart';
 // import 'package:portfolio/state/state_manager.dart';
 
@@ -38,8 +39,8 @@ class ShimmerGrid extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               color: bgColor,
             ),
-            height: 100,
-            width: 100,
+            height: Responsive.isMobile(context) ? 250 : 100,
+            width: Responsive.isMobile(context) ? 250 : 100,
           ),
           baseColor: Colors.grey.withOpacity(0.2),
           highlightColor: secondaryColor),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/screens/home/components/footer.dart';
 import 'package:portfolio/screens/main_screen/main_screen.dart';
 import 'package:portfolio/screens/portfolio/components/main_projects.dart';
 import 'package:portfolio/screens/portfolio/components/portfolio_banner.dart';
@@ -16,6 +17,7 @@ class _PortfolioState extends State<Portfolio> {
     return const MainScreen(children: [
       PortfolioBanner(),
       MainProjects(),
+      Footer(),
     ]);
   }
 }

@@ -62,7 +62,8 @@ class Footer extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () {
-                      _launchURL('https://twitter.com/iamdveloper?t=GlBKEOxyQFu_QHn-1ATc9g&s=09');
+                      _launchURL(
+                          'https://twitter.com/iamdveloper?t=GlBKEOxyQFu_QHn-1ATc9g&s=09');
                     },
                     child: const Icon(
                       FontAwesomeIcons.twitter,
@@ -79,9 +80,17 @@ class Footer extends StatelessWidget {
             width: double.infinity,
             decoration: const BoxDecoration(color: secondaryColor),
             child: Center(
-              child: Text(
-                '\u00a9 Franklin Osei ${DateTime.now().year}',
-                style: const TextStyle(color: kTextColor),
+              child: Column(
+                children: [
+                  Text(
+                    '\u00a9 Franklin Osei ${DateTime.now().year}',
+                    style: const TextStyle(color: kTextColor),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text('Made with Flutter'),
+                ],
               ),
             ),
           )
