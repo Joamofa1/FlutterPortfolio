@@ -54,7 +54,7 @@ class MyProjects extends ConsumerWidget {
             },
             error: (err, _) {
               return const Center(
-                child: Text("Couldn't fetch projects"),
+                child: Text("Couldn't fetch projects..."),
               );
             },
             loading: () {

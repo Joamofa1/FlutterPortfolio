@@ -118,7 +118,7 @@ class HomeBanner extends StatelessWidget {
                       backgroundColor: primaryColor,
                     ),
                     child: const Text(
-                      "EXPLORE NOW",
+                      "View Projects",
                       style: TextStyle(color: darkColor),
                     ),
                   ),
