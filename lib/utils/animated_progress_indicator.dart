@@ -81,7 +81,7 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
                     fontSize: 11,
                   ),
                 ),
-                Text((value * 100).toInt().toString() + "%"),
+                // Text((value * 100).toInt().toString() + "%"),
               ],
             ),
             const SizedBox(height: defaultPadding / 2),
